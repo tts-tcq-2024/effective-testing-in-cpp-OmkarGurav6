@@ -22,9 +22,9 @@ void alertInCelcius(float farenheit) {
     }
 }
 
-void testAlertFailureCount() {
-    // Reset the failure count
-    int alertFailureCount = 0;
+void testAlertFailureCount(int alertFailureCount) {
+
+    alertFailureCount = 0;
     
     // Test cases
     alertInCelcius(200); 
@@ -44,7 +44,9 @@ void testAlertFailureCount() {
 
 
 int main() {
-    testAlertFailureCount();
+    int alertFailureCount = 0;
+    
+    testAlertFailureCount(alertFailureCount);
 
     std::cout << alertFailureCount << " alerts failed.\n";
     std::cout << "All is well (maybe!)\n";
