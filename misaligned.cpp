@@ -50,7 +50,6 @@ void testColorPairs()
 }
 
 int main() {
-    int result = printColorMap();
     testColorPairs();
     std::cout << "All is well (maybe!)\n";
     return 0;
