@@ -1,13 +1,12 @@
 #include <iostream>
 #include <assert.h>
 
-int alertFailureCount = 0;
-
 int networkAlertStub(float celcius) {
     std::cout << "ALERT: Temperature is " << celcius << " celcius.\n";
+    if(celcius > 250)
+        return 500;
     // Return 200 for ok
     // Return 500 for not-ok
-    // stub always succeeds and returns 200
     return 200;
 }
 
@@ -23,9 +22,30 @@ void alertInCelcius(float farenheit) {
     }
 }
 
+void testAlertFailureCount() {
+    // Reset the failure count
+    int alertFailureCount = 0;
+    
+    // Test cases
+    alertInCelcius(500); 
+    std::cout << "AlertFailureCount = " << alertFailureCount << std::endl;
+    assert(alertFailureCount == 1);
+    
+    alertInCelcius(750); 
+    std::cout << "AlertFailureCount = " << alertFailureCount << std::endl;
+    assert(alertFailureCount == 2);
+    
+    alertInCelcius(150);   
+    std::cout << "AlertFailureCount = " << alertFailureCount << std::endl;
+    assert(alertFailureCount == 2); 
+
+    std::cout << "All tests passed successfully!\n";
+}
+
+
 int main() {
-    alertInCelcius(400.5);
-    alertInCelcius(303.6);
+    testAlertFailureCount();
+
     std::cout << alertFailureCount << " alerts failed.\n";
     std::cout << "All is well (maybe!)\n";
     return 0;
