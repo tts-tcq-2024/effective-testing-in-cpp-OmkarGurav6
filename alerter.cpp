@@ -27,11 +27,11 @@ void testAlertFailureCount() {
     int alertFailureCount = 0;
     
     // Test cases
-    alertInCelcius(500); 
+    alertInCelcius(200); 
     std::cout << "AlertFailureCount = " << alertFailureCount << std::endl;
     assert(alertFailureCount == 1);
     
-    alertInCelcius(750); 
+    alertInCelcius(300); 
     std::cout << "AlertFailureCount = " << alertFailureCount << std::endl;
     assert(alertFailureCount == 2);
     
